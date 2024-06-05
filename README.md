@@ -21,7 +21,7 @@ En el archivo "configuraciones/conexion.json" Sustituye la configuración de las
     "desarrollo": {
         "config_id": "desarrollo",
         "database_config_pg": {
-            "server": "HOST_DEV",
+            "host": "HOST_DEV",
             "database": "BD_DEV",
             "user": "USR_DEV",
             "password": "PASS_DEV",

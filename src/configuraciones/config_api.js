@@ -8,7 +8,7 @@ dotenv.config();
 const environment = process.env.NODE_ENV || "local";
 const environmentConfig = conexion.conexion;
 
-environmentConfig.database_config_pg.server = process.env.DB_HOST || environmentConfig.database_config_pg.server;
+environmentConfig.database_config_pg.host = process.env.DB_HOST || environmentConfig.database_config_pg.host;
 environmentConfig.database_config_pg.database = process.env.DB_NAME || environmentConfig.database_config_pg.database;
 environmentConfig.database_config_pg.user = process.env.DB_USER || environmentConfig.database_config_pg.user;
 environmentConfig.database_config_pg.password = process.env.DB_PASSWORD || environmentConfig.database_config_pg.password;

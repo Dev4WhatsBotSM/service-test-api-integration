@@ -7,14 +7,14 @@ import { ConsumirServicio } from '../src/servicios/microservicios.js';
 const BEFORE_ALL_TIMEOUT = 30000; // 30 sec
 
 
-describe('Servicios.order.ApiServOrderCategory.ConsApiCategory', () => {
+describe('Servicios.discount.ApiDiscount.ConsApiDiscountGet', () => {
     let response;
     let body;
  
     beforeAll(async () => {
-        let url = Servicios.order.ApiServOrderCategory.ConsApiCategory
-        url.url = url.url.replace(":id_cat_ped", 1)
-        response = await ConsumirServicio(url, 'ConsApiCategory')
+        let url = Servicios.discount.ApiDiscount.ConsApiDiscountGet
+        url.url = url.url.replace(":id_descuento", 27)
+        response = await ConsumirServicio(url, 'ConsApiDiscountGet')
         console.log("response", response)
     }, BEFORE_ALL_TIMEOUT);
 
@@ -30,22 +30,26 @@ describe('Servicios.order.ApiServOrderCategory.ConsApiCategory', () => {
 });
 
 
-describe('Servicios.order.ApiServOrderCategory.ConsApiCategoryPost', () => {
+describe('Servicios.discount.ApiDiscount.ConsApiDiscountPost', () => {
     let response;
     let body;
     
 
     beforeAll(async () => {
-        let url = Servicios.order.ApiServOrderCategory.ConsApiCategoryPost
+        let url = Servicios.discount.ApiDiscount.ConsApiDiscountPost
         url.data={
-            "datos" : {
-                "status" : "No Activo",
-                "title" : "Test Johan",
-                "descrip" : "Prueba de Test put",
-                "prioridad" : "1"
+            "descount":{
+                "id_client_admin_bot":1,
+                "nombre":"Test",
+                "descripcion":"Testing xd",
+                "tipo_descuento":"Test",
+                "valor":900,
+                "fecha_inicio":"2024-06-07",
+                "fecha_fin":"2024-06-07",
+                "codigo":"BCECPN2024"
             }
         }
-        response = await ConsumirServicio(url, 'ConsApiCategoryPost')
+        response = await ConsumirServicio(url, 'ConsApiDiscountPost')
         console.log("response", response)
     }, BEFORE_ALL_TIMEOUT);
 
@@ -57,27 +61,32 @@ describe('Servicios.order.ApiServOrderCategory.ConsApiCategoryPost', () => {
         expectTypeOf(response.data.resultado);
     });
 
+    
+
    
 }
 );
 
-describe('Servicios.order.ApiServOrderCategory.ConsApiCategoryPut', () => {
+describe('Servicios.discount.ApiDiscount.ConsApiDiscountPut', () => {
     let response;
     let body;
     
 
     beforeAll(async () => {
-        let url = Servicios.order.ApiServOrderCategory.ConsApiCategoryPut
+        let url = Servicios.discount.ApiDiscount.ConsApiDiscountPut
+        url.url = url.url.replace(":id_descuento", 29)
         url.data={
-            "datos" : {
-                "id_cat_ped":22,
-                "status" : "No Activo",
-                "title" : "Test Johan",
-                "descrip" : "Prueba de Test en donde se modifican datos",
-                "prioridad" : "1"
-            }
+            "descount":{
+                "id_client_admin_bot": 1,
+                "idbot_control": 1,
+                "nombre": "Test",
+                "descripcion": "Descuento por Test",
+                "tipo_descuento": "promocion",
+                "valor": 1900,
+                "codigo": "ICKKCK"
         }
-        response = await ConsumirServicio(url, 'ConsApiCategoryPut')
+        }
+        response = await ConsumirServicio(url, 'ConsApiDiscountPut')
         console.log("response", response)
     }, BEFORE_ALL_TIMEOUT);
 
