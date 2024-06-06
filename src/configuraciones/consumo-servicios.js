@@ -1,9 +1,9 @@
 export const ORDER = {
     URL_API_SRVC_ORDER: process.env.URL_API_SRVC_ORDER || "http://localhost:8090/api/service/v1",//Api-Service-Orders Pedidos
-    URL_API_SERV_OR_PACKG: process.env.URL_API_SERV_OR_PACKG||"http://localhost:8091/api/service/v1",//Api-Service-Order-Package
-    URL_API_SERV_ORDER_CAT_PROD: process.env.URL_API_SERV_ORDER_CAT_PROD||"http://localhost:8094/api/service/v1",//Api-sc-order-cat-prod
-
-    URL_API_SERV_ORDER_DISCOUNT:process.env.URL_API_SERV_ORDER_DISCOUNT||"http://localhost:8092/api/service/v1",
+    URL_API_SERV_OR_PACKG: process.env.URL_API_SERV_OR_PACKG || "http://localhost:8091/api/service/v1",//Api-Service-Order-Package
+    URL_API_SERV_ORDER_CAT_PROD: process.env.URL_API_SERV_ORDER_CAT_PROD || "http://localhost:8094/api/service/v1",//Api-sc-order-cat-prod
+    URL_API_SERV_ORDER_SUS: process.env.URL_API_SERV_ORDER_SUS||"http://localhost:8093/api/service/v1",
+    URL_API_SERV_ORDER_DISCOUNT: process.env.URL_API_SERV_ORDER_DISCOUNT || "http://localhost:8092/api/service/v1",
 };
 const idfrUsuario = "TestJohan";
 const nameAppl = "Api-Test";
@@ -104,15 +104,15 @@ export const Servicios = {
                     identificador_usuario: idfrUsuario
                 },
             },
-            //Servicio Abajo Luis
-            // ConsApiDetallePedidoPut: {
-            //     method : 'PUT',
-            //     url:`${ORDER.URL_API_SRVC_ORDER}/detalle/pedido`,
-            //      headers:{
-            //         nombre_aplicativo: nameAppl,
-            //         identificador_usuario: idfrUsuario
-            //     },
-            // },
+            
+            ConsApiDetallePedidoPut: {
+                method : 'PUT',
+                url:`${ORDER.URL_API_SRVC_ORDER}/detalle/pedido`,
+                 headers:{
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: idfrUsuario
+                },
+            },
 
             ConsApiDetalleCambiarProductoPut: {
                 method: 'PUT',
@@ -131,7 +131,7 @@ export const Servicios = {
                     identificador_usuario: 1
                 },
             },
-            
+
 
             ConsApiDetalleCambiarProd2PaqPut: {
                 method: 'PUT',
@@ -204,7 +204,7 @@ export const Servicios = {
 
         },
 
-        Productobot:{
+        Productobot: {
             ConsProductoGet: {
                 method: "GET",
                 url: `${ORDER.URL_API_SERV_ORDER_CAT_PROD}/productos/:id_producto`,
@@ -258,39 +258,7 @@ export const Servicios = {
         }
     },
 
-    prod: {
-        ApiProd: {
-
-            ConsApiProdGet: {
-                method: "GET",
-                url: `${ORDER.URL_API_SRVC_ORDER}/categoria/productos/:id_producto`,
-                headers: {
-                    nombre_aplicativo: nameAppl,
-                    identificador_usuario: idfrUsuario
-                },
-            },
-            ConsApiProdPost: {
-                method: 'POST',
-                url: `${ORDER.URL_API_SRVC_ORDER}/categoria/productos`,
-                headers: {
-                    nombre_aplicativo: nameAppl,
-                    identificador_usuario: idfrUsuario
-                },
-            },
-
-            ConsApiProdPut: {
-                method: 'PUT',
-                url: `${ORDER.URL_API_SRVC_ORDER}/categoria/productos/:id_producto`,
-                headers: {
-                    nombre_aplicativo: nameAppl,
-                    identificador_usuario: idfrUsuario
-                },
-            },
-
-        },
-    },
-
-    discount:{
+    discount: {
         ApiDiscount: {
             ConsApiDiscountGet: {
                 method: "GET",
@@ -318,6 +286,110 @@ export const Servicios = {
             },
         }
     },
+
+    ServOrdPack: {
+        ApiProducts: {
+            PackageGetProd: {
+                method: "GET",
+                url: `${ORDER.URL_API_SERV_OR_PACKG}/precio/productos/:id_paquete`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+            PackagePostProd: {
+                method: 'POST',
+                url: `${ORDER.URL_API_SERV_OR_PACKG}/detallepaquetes`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+            PackagePutPack: {
+                method: 'PUT',
+                url: `${ORDER.URL_API_SERV_OR_PACKG}/updatedetalle`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+
+        },
+        ApiPaquetes: {
+            PackageGetPack: {
+                method: "GET",
+                url: `${ORDER.URL_API_SERV_OR_PACKG}/paquete/productos/:id_paquete`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+            PackagePostPack: {
+                method: 'POST',
+                url: `${ORDER.URL_API_SERV_OR_PACKG}/detallepaquetes`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+        }
+    },
+
+    Suscription:{
+        ApiSuscription: {
+            ConsApiSuscriptionGet: {
+                method: "GET",
+                url: `${ORDER.URL_API_SERV_ORDER_SUS}/suscripcion/:id_suscripcion`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+            ConsApiSuscriptionPost: {
+                method: 'POST',
+                url: `${ORDER.URL_API_SERV_ORDER_SUS}/suscripcion`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+            ConsApiSuscriptionPut: {
+                method: 'PUT',
+                url: `${ORDER.URL_API_SERV_ORDER_SUS}/suscripcion/:id_suscripcion`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+        },
+        ApiPagosSusc: {
+            ConsApiSuscriptionGet: {
+                method: "GET",
+                url: `${ORDER.URL_API_SERV_ORDER_SUS}/pago/suscripcion/:id_pago_suscr`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+            ConsApiSuscriptionPost: {
+                method: 'POST',
+                url: `${ORDER.URL_API_SERV_ORDER_SUS}/pago/suscripcion`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+            ConsApiSuscriptionPut: {
+                method: 'PUT',
+                url: `${ORDER.URL_API_SERV_ORDER_SUS}/pago/suscripcion/:id_pago_suscr`,
+                headers: {
+                    nombre_aplicativo: nameAppl,
+                    identificador_usuario: 1
+                },
+            },
+        }
+        
+    }
 
 
 };
